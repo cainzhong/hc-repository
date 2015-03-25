@@ -2,6 +2,7 @@ package com.online.shopping.orange.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,11 +45,11 @@ public class Pay {
 	
 	@Getter
 	@Setter
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private UserAccount userAccount;
 	
 	@Getter
 	@Setter
-	@OneToMany
+	@OneToMany(fetch=FetchType.LAZY)
 	private OrderedItem orderedItem;
 }

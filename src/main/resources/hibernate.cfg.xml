@@ -3,23 +3,34 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost:9001</property>
-		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
-		
+		<property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+		<!-- <property name="hibernate.connection.url">jdbc:derby:D://Apache//derby-database//orange</property> -->
+		<property name="hibernate.connection.url">jdbc:derby://127.0.0.1:1527/orange</property>
+		<property name="hibernate.connection.username">orange</property>
+		<property name="hibernate.connection.password">orange</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+
 		<!-- Use the C3P0 connection pool provider -->
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.timeout">300</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
 		<property name="hibernate.c3p0.idle_test_period">3000</property>
-		
+
 		<!-- Show and print nice SQL on stdout -->
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		
+
 		<!-- List of XML mapping files -->
-		<!-- <mapping resource="hello/Message.hbm.xml" /> -->
+		<mapping class="com.online.shopping.orange.domain.Address" />
+		<mapping class="com.online.shopping.orange.domain.City" />
+		<mapping class="com.online.shopping.orange.domain.ContactInfo" />
+		<mapping class="com.online.shopping.orange.domain.Country" />
+		<mapping class="com.online.shopping.orange.domain.District" />
+		<mapping class="com.online.shopping.orange.domain.OrderedItem" />
+		<mapping class="com.online.shopping.orange.domain.Pay" />
+		<mapping class="com.online.shopping.orange.domain.Product" />
+		<mapping class="com.online.shopping.orange.domain.Stock" />
+		<mapping class="com.online.shopping.orange.domain.UserAccount" />
 	</session-factory>
 </hibernate-configuration>
