@@ -1,5 +1,7 @@
 package com.online.shopping.orange.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,5 +53,5 @@ public class Pay {
 	@Getter
 	@Setter
 	@OneToMany(fetch=FetchType.LAZY)
-	private OrderedItem orderedItem;
+	private List<OrderedItem> orderedItemList;
 }

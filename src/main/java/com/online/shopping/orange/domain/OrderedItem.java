@@ -25,7 +25,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "SHOPPING_LIST")
+@Table(name = "ORDERED_ITEM")
 public class OrderedItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,10 +58,11 @@ public class OrderedItem {
 	@Setter
 	@Column(name="RECEIPT_DATE")
 	private Timestamp receiptDate;
-	
-	@Getter
-	@Setter
-	private Product product;
+//	
+//	@Getter
+//	@Setter
+//	@Column(name="PRODUCT_ID")
+//	private Product product;
 	
 	@Getter
 	@Setter

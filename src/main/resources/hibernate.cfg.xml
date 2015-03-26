@@ -4,8 +4,8 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-		<!-- <property name="hibernate.connection.url">jdbc:derby:D://Apache//derby-database//orange</property> -->
-		<property name="hibernate.connection.url">jdbc:derby://127.0.0.1:1527/orange</property>
+		<!-- <property name="hibernate.connection.url">jdbc:derby:D://Apache//derby-database//orange;create=true</property> -->
+		<property name="hibernate.connection.url">jdbc:derby://127.0.0.1:1527/orange;create=true</property>
 		<property name="hibernate.connection.username">orange</property>
 		<property name="hibernate.connection.password">orange</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>

@@ -41,6 +41,5 @@
 			<artifactId>derbyclient</artifactId>
 			<version>10.10.2.0</version>
 		</dependency>
-
 	</dependencies>
 </project>

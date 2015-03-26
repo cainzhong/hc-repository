@@ -26,8 +26,8 @@ public class JDBCTest {
 
 		// String url =
 		// "jdbc:derby://localhost:1527//orange;create=true;user=orange;password=orange";
-//		String url = "jdbc:derby:D://Apache//derby-database//orange";
-		String url="jdbc:derby://localhost:1527//orange";
+		String url = "jdbc:derby:D://Apache//derby-database//orange";
+//		String url="jdbc:derby://localhost:1527//orange";
 		String className = "org.apache.derby.jdbc.ClientDriver";
 		String user = "orange";
 		String password = "orange";

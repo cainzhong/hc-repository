@@ -26,7 +26,7 @@ public class HelloWorld {
 //		Session session=HibernateUtil.getSessionFactory().openSession();
 //		Transaction tx=session.beginTransaction();
 //		System.out.println("*****************************************");
-//		UserAccount userAccount=new UserAccount();
+		UserAccount userAccount=new UserAccount();
 //		userAccount
 //		userAccount.setPrimaryEmail("abc@a.com");
 //		Long emailID=(Long) session.save(userAccount);
