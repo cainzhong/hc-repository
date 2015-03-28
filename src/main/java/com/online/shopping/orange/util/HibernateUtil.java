@@ -31,7 +31,6 @@ public class HibernateUtil {
 
 	public static SessionFactory getSessionFactory() {
 		// Alternatively, you could look up in JNDI here
-		System.out.println("*****************************************");
 		return sessionFactory;
 	}
 

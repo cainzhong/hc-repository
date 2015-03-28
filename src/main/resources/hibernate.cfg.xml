@@ -11,8 +11,6 @@
 		<!-- MySql -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost/orange</property>
-	<!-- 	<property name="connection.useUnicode">true</property>
-		<property name="connection.characterEncoding">gbk</property> -->
 		<property name="connection.username">root</property>
 		<!-- <property name="connection.password">root</property> -->
 
@@ -27,6 +25,7 @@
 		<!-- Show and print nice SQL on stdout -->
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
+		<property name="default_schema">orange</property>
 
 		<!-- List of XML mapping files -->
 		<mapping class="com.online.shopping.orange.domain.Address" />
