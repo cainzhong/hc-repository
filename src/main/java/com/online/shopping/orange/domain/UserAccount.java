@@ -35,17 +35,9 @@ public class UserAccount {
 	@Column(name = "USERNAME",unique=true,nullable=false)
 	private String username;
 
-//	@Getter
-//	@Setter
+	@Getter
+	@Setter
 	@Column(name = "PASSWORD")
 	private String password;
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
 }
