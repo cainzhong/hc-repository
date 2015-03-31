@@ -12,18 +12,44 @@ import com.online.shopping.orange.util.HibernateUtil;
  * @author Cain
  *
  */
-public class OrangeRepository {
-	public List<UserAccount> findUserAccountByUserName(String username) {
-		Session userAccountSession = HibernateUtil.getSessionFactory().openSession();
-		Transaction userAccountTransaction = userAccountSession.beginTransaction();
-
-		List<UserAccount> userAccountlList = userAccountSession.createQuery("from UserAccount").list();
-
-		userAccountTransaction.commit();
-		userAccountSession.close();
-
-		HibernateUtil.shutdown();
-
-		return userAccountlList;
-	}
+public interface OrangeRepository {
+	
+	/** 
+	 * Find a user info through user name.
+	 * 
+	 * @param username
+	 * @return
+	 */
+	List<UserAccount> findUserAccountByUserName(String username);
+	
+	/**
+	 * Put a product into shopping cart. Note: the 'STATUS' shall be zero.
+	 * 
+	 * @param username
+	 * @param productId
+	 * @param orderedQuantity
+	 * @return
+	 */
+	boolean orderItemToShoppingCart(String username,int productId,int orderedQuantity);
+	
+	/**
+	 * The user delete the product in the shopping cart. Note: set the 'STATUS' as three.
+	 * 
+	 * @param username
+	 * @param productId
+	 * @return
+	 */
+	boolean deleteOrderItemInShoppingCart(String username,int productId);
+	
+	/**
+	 * Fill the info of receipting, such as recipient, address and mode of payment.
+	 * 
+	 * @param recipient
+	 * @param address
+	 * @param modeOfPayment
+	 * @return
+	 */
+	boolean fillReceiptInfo(String recipient,String address,String modeOfPayment);
+	
+	
 }
