@@ -1,9 +1,10 @@
 package com.online.shopping.orange.repository.impl;
 
-import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.online.shopping.orange.domain.UserAccount;
 import com.online.shopping.orange.repository.OrangeRepository;
@@ -13,14 +14,17 @@ import com.online.shopping.orange.util.HibernateUtil;
  * @author Cain
  *
  */
+@Repository
 public class OrangeRepositoryImpl implements OrangeRepository{
 	
 	public UserAccount findUserAccountByUserName(String username) {
 		Session userAccountSession = HibernateUtil.getSessionFactory().openSession();
 		Transaction userAccountTransaction = userAccountSession.beginTransaction();
 
-		UserAccount userAccount = (UserAccount) userAccountSession.createQuery("from UserAccount").uniqueResult();
-
+		Query query= userAccountSession.createQuery("from UserAccount where username= ?");
+		query.setParameter(0, username);
+		UserAccount userAccount=(UserAccount) query.uniqueResult();
+		
 		userAccountTransaction.commit();
 		userAccountSession.close();
 
