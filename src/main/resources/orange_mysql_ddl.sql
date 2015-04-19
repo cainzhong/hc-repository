@@ -80,7 +80,8 @@ USER_ACCOUNT_ID INT(10)
 ENGINE=InnoDB;
 /*Note: '0' indicates that the products in the shopping cart.
 		'1' indicates that the products have been bought but the trade is in progress.
-		'2' indicates that the products have been bought and trade has completed. */
+		'2' indicates that the products have been bought and trade has completed.
+		'3' indicates that the products have been deleted by user after put into the shopping cart.	*/
 
 CREATE TABLE IF NOT EXISTS PAY(
 ID INT(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
