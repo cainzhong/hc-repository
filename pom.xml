@@ -37,23 +37,16 @@
 			<version>1.12.6</version>
 		</dependency>
 		<!-- derby 10.10.2.0 is not compatible with hibernate4 -->
-		<!-- <dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>10.10.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbyclient</artifactId>
-			<version>10.10.2.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.apache.derby</groupId> <artifactId>derby</artifactId> 
+			<version>10.10.2.0</version> </dependency> <dependency> <groupId>org.apache.derby</groupId> 
+			<artifactId>derbyclient</artifactId> <version>10.10.2.0</version> </dependency> -->
 		<!-- MySQL Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.34</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>

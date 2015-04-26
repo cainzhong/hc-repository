@@ -2,11 +2,8 @@ package com.online.shopping.orange.repository;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
+import com.online.shopping.orange.domain.OrderedItem;
 import com.online.shopping.orange.domain.UserAccount;
-import com.online.shopping.orange.util.HibernateUtil;
 
 /**
  * @author Cain
@@ -31,6 +28,14 @@ public interface OrangeRepository {
 	 * @return
 	 */
 	boolean orderItemToShoppingCart(String username,int productId,int orderedQuantity);
+	
+	/**
+	 * Get all products who puts them into the shopping cart. Note: find the 'STATUS' which is zero.
+	 * 
+	 * @param username
+	 * @return
+	 */
+	List<OrderedItem> getOrderedItemForUser(String username);
 	
 	/**
 	 * The user delete the product in the shopping cart. Note: set the 'STATUS' as three.

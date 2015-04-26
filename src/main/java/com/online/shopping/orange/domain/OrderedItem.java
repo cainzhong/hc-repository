@@ -58,11 +58,11 @@ public class OrderedItem {
 	@Setter
 	@Column(name="RECEIPT_DATE")
 	private Timestamp receiptDate;
-//	
-//	@Getter
-//	@Setter
-//	@Column(name="PRODUCT_ID")
-//	private Product product;
+	
+	@Getter
+	@Setter
+	@Column(name="PRODUCT_ID")
+	private Product product;
 	
 	@Getter
 	@Setter
