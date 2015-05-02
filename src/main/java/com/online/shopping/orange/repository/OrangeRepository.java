@@ -3,6 +3,7 @@ package com.online.shopping.orange.repository;
 import java.util.List;
 
 import com.online.shopping.orange.domain.OrderedItem;
+import com.online.shopping.orange.domain.Product;
 import com.online.shopping.orange.domain.UserAccount;
 
 /**
@@ -10,51 +11,51 @@ import com.online.shopping.orange.domain.UserAccount;
  *
  */
 public interface OrangeRepository {
-	
-	/** 
+
+	/**
 	 * Find a user info through user name.
-	 * 
+	 *
 	 * @param username
 	 * @return
 	 */
 	UserAccount findUserAccountByUserName(String username);
-	
+
 	/**
 	 * Put a product into shopping cart. Note: the 'STATUS' shall be zero.
-	 * 
-	 * @param username
-	 * @param productId
+	 *
+	 * @param userAccount
+	 * @param product
 	 * @param orderedQuantity
 	 * @return
 	 */
-	boolean orderItemToShoppingCart(String username,int productId,int orderedQuantity);
-	
+	boolean orderItemToShoppingCart(UserAccount userAccount,Product product,long orderedQuantity);
+
 	/**
-	 * Get all products who puts them into the shopping cart. Note: find the 'STATUS' which is zero.
-	 * 
-	 * @param username
+	 * Get all products which put them into the shopping cart for someone. Note: find the 'STATUS' which is zero.
+	 *
+	 * @param user_account_id
 	 * @return
 	 */
-	List<OrderedItem> getOrderedItemForUser(String username);
-	
+	List<OrderedItem> getOrderedItemInShoppingCartForUser(long user_account_id);
+
 	/**
 	 * The user delete the product in the shopping cart. Note: set the 'STATUS' as three.
-	 * 
-	 * @param username
+	 *
+	 * @param user_account_id
 	 * @param productId
 	 * @return
 	 */
-	boolean deleteOrderItemInShoppingCart(String username,int productId);
-	
+	boolean deleteOrderedItemInShoppingCart(long user_account_id,int productId);
+
 	/**
 	 * Fill the info of receipting, such as recipient, address and mode of payment.
-	 * 
+	 *
 	 * @param recipient
 	 * @param address
 	 * @param modeOfPayment
 	 * @return
 	 */
 	boolean fillReceiptInfo(String recipient,String address,String modeOfPayment);
-	
-	
+
+
 }

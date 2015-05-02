@@ -1,6 +1,6 @@
 package com.online.shopping.orange.repository.impl;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -19,62 +19,44 @@ import com.online.shopping.orange.util.HibernateUtil;
  *
  */
 @Repository
-public class OrangeRepositoryImpl implements OrangeRepository{
-	
+public class OrangeRepositoryImpl implements OrangeRepository {
+
+	private Session session;
+	private Transaction transaction;
+
 	public UserAccount findUserAccountByUserName(String username) {
-		Session userAccountSession = HibernateUtil.getSessionFactory().openSession();
-		Transaction userAccountTransaction = userAccountSession.beginTransaction();
-
-		Query query= userAccountSession.createQuery("from UserAccount where username= ?");
+		Query query = this.session.createQuery("from UserAccount as ua where ua.username= ?");
 		query.setParameter(0, username);
-		UserAccount userAccount=(UserAccount) query.uniqueResult();
-		
-		userAccountTransaction.commit();
-		userAccountSession.close();
-
-		HibernateUtil.shutdown();
+		UserAccount userAccount = (UserAccount) query.uniqueResult();
 
 		return userAccount;
 	}
 
-	public boolean orderItemToShoppingCart(String username, int productId,
-			int orderedQuantity) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean orderItemToShoppingCart(UserAccount userAccount, Product product,long orderedQuantity) {
+		try {
+			OrderedItem orderedItem=new OrderedItem();
+			orderedItem.setOrderdQuantity(orderedQuantity);
+			orderedItem.setProduct(product);
+			orderedItem.setStatus(0);
+			orderedItem.setUser_Account(userAccount);
+			orderedItem.setShoppingCartDate(new Timestamp(System.currentTimeMillis()));
+
+			this.session.save(orderedItem);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
-	public List<OrderedItem> getOrderedItemForUser(String username) {
-	/*	Session OrderedItemSession = HibernateUtil.getSessionFactory().openSession();
-		Transaction OrderedItemTransaction = OrderedItemSession.beginTransaction();
+	public List<OrderedItem> getOrderedItemInShoppingCartForUser(long user_account_id) {
+		Query query = this.session.createQuery("from OrderedItem where user_account_id= :user_account_id and status=0");
+		query.setParameter("user_account_id", user_account_id);
+		List<OrderedItem> orderedItemList = query.list();
 
-		Query query= OrderedItemSession.createQuery("from OrderedItem where username= ?");
-		query.setParameter(0, username);
-		 List<OrderedItem> orderedItemList=query.list();
-		
-		 OrderedItemTransaction.commit();
-		 OrderedItemSession.close();
-
-		HibernateUtil.shutdown();*/
-		Product p1=new Product();
-		Product p2=new Product();
-		p1.setName("iPhone");
-		p1.setPrice(6000L);
-		p2.setName("Huawei");
-		p2.setPrice(2000L);
-		OrderedItem o1=new OrderedItem();
-		OrderedItem o2=new OrderedItem();
-		o1.setProduct(p1);
-		o1.setOrderdQuantity(2L);
-		o2.setProduct(p2);
-		o2.setOrderdQuantity(1L);
-		 List<OrderedItem> orderedItemList=new ArrayList<OrderedItem>();
-		 orderedItemList.add(o1);
-		 orderedItemList.add(o2);
-		 
 		return orderedItemList;
 	}
-	
-	public boolean deleteOrderItemInShoppingCart(String username, int productId) {
+
+	public boolean deleteOrderedItemInShoppingCart(long user_account_id, int productId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -83,6 +65,24 @@ public class OrangeRepositoryImpl implements OrangeRepository{
 			String modeOfPayment) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * Open a session and begin a transaction.
+	 */
+	public void openSessionAndTransaction() {
+		this.session = HibernateUtil.getSessionFactory().openSession();
+		this.transaction = this.session.beginTransaction();
+	}
+
+	/**
+	 * Close a session and commit a transaction.
+	 */
+	public void closeSessionAndTranstion() {
+		this.transaction.commit();
+		this.session.close();
+
+		HibernateUtil.shutdown();
 	}
 
 }
