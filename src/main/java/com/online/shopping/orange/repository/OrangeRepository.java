@@ -33,10 +33,10 @@ public interface OrangeRepository {
 	/**
 	 * Get all products which put them into the shopping cart for someone. Note: find the 'STATUS' which is zero.
 	 *
-	 * @param user_account_id
+	 * @param userAccountId
 	 * @return
 	 */
-	List<OrderedItem> getOrderedItemInShoppingCartForUser(long user_account_id);
+	List<OrderedItem> getOrderedItemInShoppingCartForUser(long userAccountId);
 
 	/**
 	 * The user delete the product in the shopping cart. Note: set the 'STATUS' as three.
@@ -45,7 +45,7 @@ public interface OrangeRepository {
 	 * @param productId
 	 * @return
 	 */
-	boolean deleteOrderedItemInShoppingCart(long user_account_id,int productId);
+	boolean deleteOrderedItemInShoppingCart(long userAccountId,int productId);
 
 	/**
 	 * Fill the info of receipting, such as recipient, address and mode of payment.

@@ -48,15 +48,15 @@ public class OrangeRepositoryImpl implements OrangeRepository {
 		}
 	}
 
-	public List<OrderedItem> getOrderedItemInShoppingCartForUser(long user_account_id) {
+	public List<OrderedItem> getOrderedItemInShoppingCartForUser(long userAccountId) {
 		Query query = this.session.createQuery("from OrderedItem where user_account_id= :user_account_id and status=0");
-		query.setParameter("user_account_id", user_account_id);
+		query.setParameter("user_account_id", userAccountId);
 		List<OrderedItem> orderedItemList = query.list();
 
 		return orderedItemList;
 	}
 
-	public boolean deleteOrderedItemInShoppingCart(long user_account_id, int productId) {
+	public boolean deleteOrderedItemInShoppingCart(long userAccountId, int productId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
