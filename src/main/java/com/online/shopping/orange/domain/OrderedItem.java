@@ -34,6 +34,70 @@ public class OrderedItem {
 	@Column(name = "ID", nullable = false)
 	private long id;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getOrderdQuantity() {
+		return orderdQuantity;
+	}
+
+	public void setOrderdQuantity(long orderdQuantity) {
+		this.orderdQuantity = orderdQuantity;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public Timestamp getShoppingCartDate() {
+		return shoppingCartDate;
+	}
+
+	public void setShoppingCartDate(Timestamp shoppingCartDate) {
+		this.shoppingCartDate = shoppingCartDate;
+	}
+
+	public Timestamp getOrderedDate() {
+		return orderedDate;
+	}
+
+	public void setOrderedDate(Timestamp orderedDate) {
+		this.orderedDate = orderedDate;
+	}
+
+	public Timestamp getReceiptDate() {
+		return receiptDate;
+	}
+
+	public void setReceiptDate(Timestamp receiptDate) {
+		this.receiptDate = receiptDate;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public UserAccount getUser_Account() {
+		return user_Account;
+	}
+
+	public void setUser_Account(UserAccount user_Account) {
+		this.user_Account = user_Account;
+	}
+
 	@Getter
 	@Setter
 	@Column(name="ORDERED_QUANTITY")
