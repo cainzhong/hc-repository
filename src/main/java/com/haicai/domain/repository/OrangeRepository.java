@@ -1,10 +1,10 @@
-package com.online.shopping.orange.repository;
+package com.haicai.domain.repository;
 
 import java.util.List;
 
-import com.online.shopping.orange.domain.OrderedItem;
-import com.online.shopping.orange.domain.Product;
-import com.online.shopping.orange.domain.UserAccount;
+import com.haicai.domain.OrderedItem;
+import com.haicai.domain.Product;
+import com.haicai.domain.User;
 
 /**
  * @author Cain
@@ -18,7 +18,7 @@ public interface OrangeRepository {
 	 * @param username
 	 * @return
 	 */
-	UserAccount findUserAccountByUserName(String username);
+	User findUserAccountByUserName(String username);
 
 	/**
 	 * Put a product into shopping cart. Note: the 'STATUS' shall be zero.
@@ -28,7 +28,7 @@ public interface OrangeRepository {
 	 * @param orderedQuantity
 	 * @return
 	 */
-	boolean orderItemToShoppingCart(UserAccount userAccount,Product product,long orderedQuantity);
+	boolean orderItemToShoppingCart(User userAccount,Product product,long orderedQuantity);
 
 	/**
 	 * Get all products which put them into the shopping cart for someone. Note: find the 'STATUS' which is zero.

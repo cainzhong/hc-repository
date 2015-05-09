@@ -4,7 +4,7 @@
  *@Date: 2015��1��21��
  *@Copyright: 2015 sg.nomaka.tk Inc. All rights reserved.
  */
-package com.online.shopping.orange.main;
+package com.haicai.domain.main;
 
 
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.online.shopping.orange.domain.UserAccount;
-import com.online.shopping.orange.util.HibernateUtil;
+import com.haicai.domain.User;
+import com.haicai.domain.util.HibernateUtil;
 
 
 /**
@@ -26,7 +26,7 @@ public class HelloWorld {
 //		Session session=HibernateUtil.getSessionFactory().openSession();
 //		Transaction tx=session.beginTransaction();
 //		System.out.println("*****************************************");
-		UserAccount userAccount=new UserAccount();
+		User userAccount=new User();
 //		userAccount
 //		userAccount.setPrimaryEmail("abc@a.com");
 //		Long emailID=(Long) session.save(userAccount);
@@ -36,7 +36,7 @@ public class HelloWorld {
 		Session newSession=HibernateUtil.getSessionFactory().openSession();
 		Transaction newTransaction=newSession.beginTransaction();
 		
-		List<UserAccount> userAccountlList=newSession.createQuery("from UserAccount").list();
+		List<User> userAccountlList=newSession.createQuery("from UserAccount").list();
 		
 		System.out.println(userAccountlList.size()+" record(s) found:");
 		

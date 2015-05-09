@@ -1,4 +1,4 @@
-package com.online.shopping.orange.repository.impl;
+package com.haicai.domain.repository.impl;
 
 import java.util.List;
 
@@ -14,9 +14,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.online.shopping.orange.domain.OrderedItem;
-import com.online.shopping.orange.domain.UserAccount;
-import com.online.shopping.orange.util.HibernateUtil;
+import com.haicai.domain.OrderedItem;
+import com.haicai.domain.User;
+import com.haicai.domain.repository.impl.OrangeRepositoryImpl;
+import com.haicai.domain.util.HibernateUtil;
 
 /**
  * @author Cain
@@ -41,7 +42,7 @@ public class OrangeRepositoryImplTest {
 	public void testFindUserAccountByUserName() {
 		String username = "APPLE";
 
-		UserAccount userAccount = orangeRepositoryImpl.findUserAccountByUserName(username);
+		User userAccount = orangeRepositoryImpl.findUserAccountByUserName(username);
 
 		Assert.assertEquals("APPLE", userAccount.getPassword());
 	}

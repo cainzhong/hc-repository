@@ -4,7 +4,7 @@
  *@Date: 2015��2��3��
  *@Copyright: 2015 sg.nomaka.tk Inc. All rights reserved.
  */
-package com.online.shopping.orange.main;
+package com.haicai.domain.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

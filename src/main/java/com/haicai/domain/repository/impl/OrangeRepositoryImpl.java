@@ -1,4 +1,4 @@
-package com.online.shopping.orange.repository.impl;
+package com.haicai.domain.repository.impl;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -8,11 +8,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import com.online.shopping.orange.domain.OrderedItem;
-import com.online.shopping.orange.domain.Product;
-import com.online.shopping.orange.domain.UserAccount;
-import com.online.shopping.orange.repository.OrangeRepository;
-import com.online.shopping.orange.util.HibernateUtil;
+import com.haicai.domain.OrderedItem;
+import com.haicai.domain.Product;
+import com.haicai.domain.User;
+import com.haicai.domain.repository.OrangeRepository;
+import com.haicai.domain.util.HibernateUtil;
 
 /**
  * @author Cain
@@ -24,15 +24,15 @@ public class OrangeRepositoryImpl implements OrangeRepository {
 	private Session session;
 	private Transaction transaction;
 
-	public UserAccount findUserAccountByUserName(String username) {
+	public User findUserAccountByUserName(String username) {
 		Query query = this.session.createQuery("from UserAccount as ua where ua.username= ?");
 		query.setParameter(0, username);
-		UserAccount userAccount = (UserAccount) query.uniqueResult();
+		User userAccount = (User) query.uniqueResult();
 
 		return userAccount;
 	}
 
-	public boolean orderItemToShoppingCart(UserAccount userAccount, Product product,long orderedQuantity) {
+	public boolean orderItemToShoppingCart(User userAccount, Product product,long orderedQuantity) {
 		try {
 			OrderedItem orderedItem=new OrderedItem();
 			orderedItem.setOrderdQuantity(orderedQuantity);

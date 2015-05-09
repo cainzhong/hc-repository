@@ -25,18 +25,12 @@
 		<!-- Show and print nice SQL on stdout -->
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<property name="default_schema">orange</property>
+		<property name="default_schema">hc</property>
 
 		<!-- List of XML mapping files -->
-		<mapping class="com.online.shopping.orange.domain.Address" />
-		<mapping class="com.online.shopping.orange.domain.City" />
-		<mapping class="com.online.shopping.orange.domain.ContactInfo" />
-		<mapping class="com.online.shopping.orange.domain.Country" />
-		<mapping class="com.online.shopping.orange.domain.District" />
-		<mapping class="com.online.shopping.orange.domain.OrderedItem" />
-		<mapping class="com.online.shopping.orange.domain.Pay" />
-		<mapping class="com.online.shopping.orange.domain.Product" />
-		<mapping class="com.online.shopping.orange.domain.Stock" />
-		<mapping class="com.online.shopping.orange.domain.UserAccount" />
+		<mapping class="com.haicai.domain.User" />
+		<mapping class="com.haicai.domain.Contact" />
+		<mapping class="com.haicai.domain.PersonalHistory" />
+		<mapping class="com.haicai.domain.Awards" />
 	</session-factory>
 </hibernate-configuration>

@@ -4,7 +4,7 @@
  *@Date: 2015��1��21��
  *@Copyright: 2015 sg.nomaka.tk Inc. All rights reserved.
  */
-package com.online.shopping.orange.util;
+package com.haicai.domain.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
