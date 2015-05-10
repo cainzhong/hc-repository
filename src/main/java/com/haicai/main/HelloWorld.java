@@ -4,7 +4,7 @@
  *@Date: 2015��1��21��
  *@Copyright: 2015 sg.nomaka.tk Inc. All rights reserved.
  */
-package com.haicai.domain.main;
+package com.haicai.main;
 
 
 import java.util.List;
@@ -13,7 +13,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.haicai.domain.User;
-import com.haicai.domain.util.HibernateUtil;
+import com.haicai.hibernate.util.HibernateUtil;
 
 
 /**
