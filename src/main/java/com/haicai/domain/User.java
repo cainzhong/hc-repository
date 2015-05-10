@@ -2,6 +2,8 @@ package com.haicai.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 
 /**
  * @author Cain
@@ -24,7 +27,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID",nullable=false)
-	private long id;
+	private int id;
 
 	@Column(name = "USERNAME",unique=true,nullable=false)
 	private String username;
@@ -39,13 +42,15 @@ public class User {
 	private String password;
 
 	/* SEX ENUM('FEMALE','MALE') */
+	@Enumerated(value=EnumType.STRING)
 	@Column(name = "SEX")
-	private Sex SEX;
+	private Sex sex;
 
 	@Column(name = "ID_NUMBER")
 	private String idNumber;
 
 	/* ID_NUMBER_TYPE ENUM('PASSPORT','IDENTITY CARD') */
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ID_NUMBER_TYPE")
 	private IdNumberType idNumberType;
 
@@ -59,7 +64,7 @@ public class User {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -95,12 +100,13 @@ public class User {
 		this.password = password;
 	}
 
-	public Sex getSEX() {
-		return this.SEX;
+	@Enumerated(EnumType.STRING)
+	public Sex getSex() {
+		return this.sex;
 	}
 
-	public void setSEX(Sex sEX) {
-		this.SEX = sEX;
+	public void setSex(Sex sex) {
+		this.sex = sex;
 	}
 
 	public String getIdNumber() {
@@ -111,6 +117,7 @@ public class User {
 		this.idNumber = idNumber;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public IdNumberType getIdNumberType() {
 		return this.idNumberType;
 	}

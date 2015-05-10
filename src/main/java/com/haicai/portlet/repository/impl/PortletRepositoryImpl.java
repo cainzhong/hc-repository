@@ -33,6 +33,12 @@ public class PortletRepositoryImpl implements PortletRepository {
 		return user;
 	}
 
+	public User getAllUsers() {
+		Query query = this.session.createQuery("from User");
+		User user = (User) query.uniqueResult();
+		return user;
+	}
+
 	/**
 	 * Open a session and begin a transaction.
 	 */

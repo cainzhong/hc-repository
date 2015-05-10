@@ -35,6 +35,9 @@ public class Contact {
 	@Column(name="TYPE")
 	private ContactType type;
 
+	@Column(name="OTHER_DESCRIPTION")
+	private String otherDdescription;
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 

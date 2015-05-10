@@ -3,14 +3,9 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property> 
-			<property name="hibernate.connection.url">jdbc:derby:D://Apache//derby-database//orange;create=true</property> 
-			<property name="hibernate.connection.url">jdbc:derby://127.0.0.1:1527/orange;create=true</property> 
-			<property name="hibernate.connection.username">orange</property> <property 
-			name="hibernate.connection.password">orange</property> <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property> -->
 		<!-- MySql -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost/orange</property>
+		<property name="connection.url">jdbc:mysql://localhost/hc</property>
 		<property name="connection.username">root</property>
 		<!-- <property name="connection.password">root</property> -->
 

@@ -4,7 +4,7 @@
  *@Date: 2015��1��21��
  *@Copyright: 2015 sg.nomaka.tk Inc. All rights reserved.
  */
-package com.haicai.main;
+package com.haicai.jdbc.main;
 
 
 import java.util.List;

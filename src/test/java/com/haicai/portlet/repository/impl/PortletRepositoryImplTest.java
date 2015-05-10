@@ -28,12 +28,20 @@ public class PortletRepositoryImplTest {
 	}
 
 	@Test
-	public void testFindUserAccountByUserName() {
-		String username = "APPLE";
+	public void testGetUserByUserName() {
+		String username = "email@email.com";
 
-		User userAccount = PortletRepositoryImplTest.portletRepositoryImpl.getUserByUserName(username);
+		User user = PortletRepositoryImplTest.portletRepositoryImpl.getUserByUserName(username);
 
-		Assert.assertEquals("APPLE", userAccount.getPassword());
+		Assert.assertEquals("password", user.getPassword());
+	}
+
+	@Test
+	public void testGetAllUsers() {
+
+		User user = PortletRepositoryImplTest.portletRepositoryImpl.getAllUsers();
+
+		Assert.assertEquals("passwod", user.getPassword());
 	}
 
 }
