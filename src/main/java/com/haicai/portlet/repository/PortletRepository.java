@@ -1,5 +1,10 @@
 package com.haicai.portlet.repository;
 
+import java.util.List;
+
+import com.haicai.domain.Awards;
+import com.haicai.domain.Contact;
+import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 
 /**
@@ -24,5 +29,27 @@ public interface PortletRepository {
 	 */
 	User getUserByUserId(int userId);
 
+	/**
+	 * Find contact info for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<Contact> getContactInfoForUser(User user);
 
+	/**
+	 * Find personal history for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<PersonalHistory> getPersonalHistoryForUser(User user);
+
+	/**
+	 * Find awards for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<Awards> getAwardsForUser(User user);
 }

@@ -2,6 +2,8 @@ package com.haicai.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,8 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import com.haicai.domain.type.AwardsType;
 
 /**
  * @author Cain
@@ -26,9 +30,9 @@ public class Awards {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
-	private long id;
+	private int id;
 
-	/* TYPE ENUM('HONORARY TITLE', 'THESIS', 'INTELLECTUAL PROPERTY','OTHER') */
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "TYPE")
 	private AwardsType type;
 
@@ -44,11 +48,11 @@ public class Awards {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -56,6 +60,11 @@ public class Awards {
 		return this.type;
 	}
 
+	/**
+	 * Honorary_Title("HONORARY TITLE",0), Thesis("THESIS",1), Intellectual_property("INTELLECTUAL PROPERTY",2), Other("OTHER",3)
+	 *
+	 * @param type
+	 */
 	public void setType(AwardsType type) {
 		this.type = type;
 	}

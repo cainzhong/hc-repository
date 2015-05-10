@@ -2,6 +2,8 @@ package com.haicai.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,8 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import com.haicai.domain.type.ContactType;
 
 /**
  * @author Cain
@@ -26,12 +30,12 @@ public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
-	private long id;
+	private int id;
 
 	@Column(name="INFO")
 	private String info;
 
-	/* TYPE ENUM('EMAIL','TELEPHONE','OTHER') */
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name="TYPE")
 	private ContactType type;
 
@@ -41,11 +45,11 @@ public class Contact {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -61,8 +65,21 @@ public class Contact {
 		return this.type;
 	}
 
+	/**
+	 * EMAIL("EMAIL",0), TELEPHONE("TELEPHONE",1), OTHER("OTHER",2)
+	 *
+	 * @param type
+	 */
 	public void setType(ContactType type) {
 		this.type = type;
+	}
+
+	public String getOtherDdescription() {
+		return this.otherDdescription;
+	}
+
+	public void setOtherDdescription(String otherDdescription) {
+		this.otherDdescription = otherDdescription;
 	}
 
 	public User getUser() {
@@ -72,5 +89,4 @@ public class Contact {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 }

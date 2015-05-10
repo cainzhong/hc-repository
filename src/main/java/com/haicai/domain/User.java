@@ -13,6 +13,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import com.haicai.domain.type.IdNumberType;
+import com.haicai.domain.type.Sex;
+
 
 /**
  * @author Cain
@@ -41,16 +44,14 @@ public class User {
 	@Column(name = "PASSWORD")
 	private String password;
 
-	/* SEX ENUM('FEMALE','MALE') */
-	@Enumerated(value=EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "SEX")
 	private Sex sex;
 
 	@Column(name = "ID_NUMBER")
 	private String idNumber;
 
-	/* ID_NUMBER_TYPE ENUM('PASSPORT','IDENTITY CARD') */
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "ID_NUMBER_TYPE")
 	private IdNumberType idNumberType;
 

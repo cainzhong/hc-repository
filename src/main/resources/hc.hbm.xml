@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.haicai.domain.User" table="user">
+        <id name="id" type="integer" column="id">
+            <generator class="native"/>    
+        </id>
+        <property name="username" column="username" type="string" />
+        <property name="realName" column="real_name" type="string"/>
+      	<property name="englishName" column="english_name" type="string"/>
+      	<property name="password" column="password" type="string"/>
+      	<property name="sex" column="sex">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.haicai.domain.type.Sex</param>
+            </type>    
+        </property>
+        <property name="idNumber" column="id_number" type="string" />
+        <property name="idNumberType" column="id_number_type">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.haicai.domain.type.IdNumberType</param>
+            </type>    
+        </property>
+        <property name="currentCountry" column="current_country" type="string" />
+        <property name="currentCity" column="current_city" type="string"/>
+    </class>
+    <class name="com.haicai.domain.Contact" table="contact">
+		<id name="id" type="integer" column="id">
+		      <generator class="native"/>    
+		</id>
+		<property name="info" column="info" type="string" />
+		<property name="type" column="type">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.haicai.domain.type.ContactType</param>
+            </type>    
+        </property>
+		<many-to-one name="user" class="com.haicai.domain.User" column="user_id" cascade="save-update" />
+    </class>
+</hibernate-mapping>
