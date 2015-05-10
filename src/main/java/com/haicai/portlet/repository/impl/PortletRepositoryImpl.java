@@ -24,6 +24,24 @@ public class PortletRepositoryImpl implements PortletRepository {
 	private Session session;
 	private Transaction transaction;
 
+	/**
+	 * Open a session and begin a transaction.
+	 */
+	public void openSessionAndTransaction() {
+		this.session = HibernateUtil.getSessionFactory().openSession();
+		this.transaction = this.session.beginTransaction();
+	}
+
+	/**
+	 * Close a session and commit a transaction.
+	 */
+	public void closeSessionAndTranstion() {
+		this.transaction.commit();
+		this.session.close();
+
+		HibernateUtil.shutdown();
+	}
+
 	public User getUserByUserName(String username) {
 		Query query = this.session.createQuery("from User as u where u.username= ?");
 		query.setParameter(0, username);
@@ -59,22 +77,46 @@ public class PortletRepositoryImpl implements PortletRepository {
 		return awardsList;
 	}
 
-	/**
-	 * Open a session and begin a transaction.
-	 */
-	public void openSessionAndTransaction() {
-		this.session = HibernateUtil.getSessionFactory().openSession();
-		this.transaction = this.session.beginTransaction();
+	public boolean addUser(User user) {
+		try {
+			this.session.save(user);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
-	/**
-	 * Close a session and commit a transaction.
-	 */
-	public void closeSessionAndTranstion() {
-		this.transaction.commit();
-		this.session.close();
-
-		HibernateUtil.shutdown();
+	public boolean addContactForUser(User user, Contact contact) {
+		try {
+			contact.setUser(user);
+			this.session.save(contact);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
+	public boolean addPersonalHistoryForUser(User user,	PersonalHistory personalHistory) {
+		try {
+			personalHistory.setUser(user);
+			this.session.save(personalHistory);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean addAwardsForUser(User user, Awards awards) {
+		try {
+			awards.setUser(user);
+			this.session.save(awards);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

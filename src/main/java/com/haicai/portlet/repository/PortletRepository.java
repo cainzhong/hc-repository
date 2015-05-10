@@ -52,4 +52,39 @@ public interface PortletRepository {
 	 * @return
 	 */
 	List<Awards> getAwardsForUser(User user);
+
+	/**
+	 * Add a user into database.
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean addUser(User user);
+
+	/**
+	 * Add contact info for a user.
+	 *
+	 * @param user
+	 * @param contact
+	 * @return
+	 */
+	boolean addContactForUser(User user,Contact contact);
+
+	/**
+	 * Add personal history for a user.
+	 *
+	 * @param user
+	 * @param personalHistory
+	 * @return
+	 */
+	boolean addPersonalHistoryForUser(User user,PersonalHistory personalHistory);
+
+	/**
+	 * Add awards for a user.
+	 *
+	 * @param user
+	 * @param awards
+	 * @return
+	 */
+	boolean addAwardsForUser(User user,Awards awards);
 }
