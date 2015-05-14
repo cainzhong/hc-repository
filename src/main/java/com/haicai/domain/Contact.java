@@ -1,5 +1,7 @@
 package com.haicai.domain;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -45,6 +47,12 @@ public class Contact {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 
+	@Column(name="CREATE_TIME")
+	private Timestamp createTime;
+
+	@Column(name="UPDATE_TIME")
+	private Timestamp updateTime;
+
 	public int getId() {
 		return this.id;
 	}
@@ -88,5 +96,21 @@ public class Contact {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Timestamp getCreateTime() {
+		return this.createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	public Timestamp getUpdateTime() {
+		return this.updateTime;
+	}
+
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
 	}
 }

@@ -1,5 +1,7 @@
 package com.haicai.domain;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -60,6 +62,12 @@ public class User {
 
 	@Column(name = "CURRENT_CITY")
 	private String currentCity;
+
+	@Column(name="CREATE_TIME")
+	private Timestamp createTime;
+
+	@Column(name="UPDATE_TIME")
+	private Timestamp updateTime;
 
 	public long getId() {
 		return this.id;
@@ -141,6 +149,22 @@ public class User {
 
 	public void setCurrentCity(String currentCity) {
 		this.currentCity = currentCity;
+	}
+
+	public Timestamp getCreateTime() {
+		return this.createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	public Timestamp getUpdateTime() {
+		return this.updateTime;
+	}
+
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
 	}
 
 }
