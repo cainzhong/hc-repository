@@ -28,5 +28,11 @@
 		<mapping class="com.haicai.domain.Contact" />
 		<mapping class="com.haicai.domain.PersonalHistory" />
 		<mapping class="com.haicai.domain.Awards" />
+		<mapping class="com.haicai.domain.JobAsked" />
+		<mapping class="com.haicai.domain.Enterprise" />
+		<mapping class="com.haicai.domain.Project" />
+		<mapping class="com.haicai.domain.EnterpriseDetail" />
+		<mapping class="com.haicai.domain.Media" />
+		<mapping class="com.haicai.domain.JobPosted" />
 	</session-factory>
 </hibernate-configuration>

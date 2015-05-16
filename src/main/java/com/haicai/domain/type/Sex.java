@@ -3,7 +3,7 @@ package com.haicai.domain.type;
 import lombok.ToString;
 
 /**
- * Enum: FEMALE("FEMALE",0), MALE("MALE",1)
+ * Enum: SEX - FEMALE("FEMALE",0), MALE("MALE",1)
  *
  * @author Cain
  *

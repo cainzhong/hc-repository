@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import com.haicai.domain.type.ContactType;
+import com.haicai.domain.type.Status;
 
 /**
  * @author Cain
@@ -43,6 +44,10 @@ public class Contact {
 
 	@Column(name="OTHER_DESCRIPTION")
 	private String otherDdescription;
+
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="STATUS")
+	private Status status;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
@@ -88,6 +93,19 @@ public class Contact {
 
 	public void setOtherDdescription(String otherDdescription) {
 		this.otherDdescription = otherDdescription;
+	}
+
+	public Status getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * ACTIVE("ACTIVE",0), INACTIVE("INACTIVE",1)
+	 *
+	 * @param status
+	 */
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public User getUser() {

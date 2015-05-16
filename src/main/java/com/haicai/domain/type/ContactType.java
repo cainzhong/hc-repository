@@ -3,7 +3,7 @@ package com.haicai.domain.type;
 import lombok.ToString;
 
 /**
- * Enum: EMAIL("EMAIL",0), TELEPHONE("TELEPHONE",1), OTHER("OTHER",2)
+ * Enum: TYPE - EMAIL("EMAIL",0), TELEPHONE("TELEPHONE",1), OTHER("OTHER",2)
  *
  * @author Cain
  *

@@ -3,7 +3,7 @@ package com.haicai.domain.type;
 import lombok.ToString;
 
 /**
- * Enum: PASSPORT("PASSPORT",0), IDENTITYCARD("IDENTITY CARD",1)
+ * Enum: ID_NUMBER_TYPE - PASSPORT("PASSPORT",0), IDENTITYCARD("IDENTITY CARD",1)
  *
  * @author Cain
  *

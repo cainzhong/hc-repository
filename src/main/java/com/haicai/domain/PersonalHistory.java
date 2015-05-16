@@ -41,6 +41,9 @@ public class PersonalHistory {
 	@Column(name = "UNIVERSITY_DEGREE")
 	private UniversityDegree universityDegree;
 
+	@Column(name="MAJOR")
+	private String major;
+
 	@Column(name = "GRADUATION_YEAR")
 	private String graduationYear;
 
@@ -80,6 +83,14 @@ public class PersonalHistory {
 	 */
 	public void setUniversityDegree(UniversityDegree universityDegree) {
 		this.universityDegree = universityDegree;
+	}
+
+	public String getMajor() {
+		return this.major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
 	}
 
 	public String getGraduationYear() {

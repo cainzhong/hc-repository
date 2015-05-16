@@ -6,6 +6,7 @@ import com.haicai.domain.Awards;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
+import com.haicai.domain.type.Status;
 
 /**
  * @author Cain
@@ -33,9 +34,10 @@ public interface PortletRepository {
 	 * Find contact info for a user.
 	 *
 	 * @param user
+	 * @param status
 	 * @return
 	 */
-	List<Contact> getContactInfoForUser(User user);
+	List<Contact> getContactInfoForUser(User user,Status status);
 
 	/**
 	 * Find personal history for a user.
