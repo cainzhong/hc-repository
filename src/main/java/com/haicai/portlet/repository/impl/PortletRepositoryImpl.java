@@ -13,6 +13,7 @@ import com.haicai.domain.Awards;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
+import com.haicai.domain.type.ContactType;
 import com.haicai.domain.type.Status;
 import com.haicai.hibernate.util.HibernateUtil;
 import com.haicai.portlet.repository.PortletRepository;
@@ -52,7 +53,7 @@ public class PortletRepositoryImpl implements PortletRepository {
 		HibernateUtil.shutdown();
 	}
 
-//	@Transactional
+	// @Transactional
 	// (readOnly=true,propagation=Propagation.REQUIRES_NEW)
 	public User getUserByUserName(String username) {
 		Query query = this.sessionFactory.getCurrentSession().createQuery("from User as u where u.username= ?");
@@ -68,10 +69,10 @@ public class PortletRepositoryImpl implements PortletRepository {
 		return user;
 	}
 
-	public List<Contact> getContactInfoForUser(User user,Status status) {
-		StringBuffer sqlQuery=new StringBuffer();
+	public List<Contact> getContactInfoForUser(User user, Status status) {
+		StringBuffer sqlQuery = new StringBuffer();
 		sqlQuery.append("from Contact as c where c.user = :user");
-		if(status!=null){
+		if (status != null) {
 			sqlQuery.append(" and c.status = :status");
 		}
 
@@ -80,6 +81,21 @@ public class PortletRepositoryImpl implements PortletRepository {
 		query.setParameter("status", status);
 		List<Contact> contactList = query.list();
 		return contactList;
+	}
+
+	public Contact getSpecificActiveContactInfoForUser(User user, ContactType contactType, String otherDdescription) {
+		StringBuffer sqlQuery = new StringBuffer();
+		sqlQuery.append("from Contact as c where c.user = :user and c.status =:status");
+		if (contactType.equals(ContactType.OTHER)) {
+			sqlQuery.append(" and c.type = :contactType and upper(c.otherDdescription) = :otherDdescription");
+		}
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from Contact as c where c.user = :user and c.status =:status and c.type = :contactType");
+		query.setParameter("user", user);
+		query.setParameter("status", Status.ACTIVE);
+		query.setParameter("contactType", contactType);
+		query.setParameter("otherDdescription", otherDdescription.toUpperCase());
+
+		return (Contact) query.uniqueResult();
 	}
 
 	public List<PersonalHistory> getPersonalHistoryForUser(User user) {
@@ -96,7 +112,7 @@ public class PortletRepositoryImpl implements PortletRepository {
 		return awardsList;
 	}
 
-	public boolean addUser(User user) {
+	public boolean createUser(User user) {
 		try {
 			this.sessionFactory.getCurrentSession().save(user);
 			return true;
@@ -106,7 +122,7 @@ public class PortletRepositoryImpl implements PortletRepository {
 		}
 	}
 
-	public boolean addContactForUser(User user, Contact contact) {
+	public boolean createContactForUser(User user, Contact contact) {
 		try {
 			contact.setUser(user);
 			this.sessionFactory.getCurrentSession().save(contact);
@@ -117,7 +133,18 @@ public class PortletRepositoryImpl implements PortletRepository {
 		}
 	}
 
-	public boolean addPersonalHistoryForUser(User user, PersonalHistory personalHistory) {
+	public boolean updateContactForUser(User user,Contact contact){
+		try {
+			contact.setUser(user);
+			this.sessionFactory.getCurrentSession().update(contact);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean createPersonalHistoryForUser(User user, PersonalHistory personalHistory) {
 		try {
 			personalHistory.setUser(user);
 			this.sessionFactory.getCurrentSession().save(personalHistory);
@@ -128,7 +155,7 @@ public class PortletRepositoryImpl implements PortletRepository {
 		}
 	}
 
-	public boolean addAwardsForUser(User user, Awards awards) {
+	public boolean createAwardsForUser(User user, Awards awards) {
 		try {
 			awards.setUser(user);
 			this.sessionFactory.getCurrentSession().save(awards);

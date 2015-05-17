@@ -6,6 +6,7 @@ import com.haicai.domain.Awards;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
+import com.haicai.domain.type.ContactType;
 import com.haicai.domain.type.Status;
 
 /**
@@ -40,6 +41,16 @@ public interface PortletRepository {
 	List<Contact> getContactInfoForUser(User user,Status status);
 
 	/**
+	 * Find a specific and active contact info for a user.
+	 *
+	 * @param user
+	 * @param contactType
+	 * @param otherDdescription
+	 * @return
+	 */
+	Contact getSpecificActiveContactInfoForUser(User user,ContactType contactType, String otherDdescription);
+
+	/**
 	 * Find personal history for a user.
 	 *
 	 * @param user
@@ -56,37 +67,46 @@ public interface PortletRepository {
 	List<Awards> getAwardsForUser(User user);
 
 	/**
-	 * Add a user into database.
+	 * Create a user into database.
 	 *
 	 * @param user
 	 * @return
 	 */
-	boolean addUser(User user);
+	boolean createUser(User user);
 
 	/**
-	 * Add contact info for a user.
+	 * Create contact info for a user.
 	 *
 	 * @param user
 	 * @param contact
 	 * @return
 	 */
-	boolean addContactForUser(User user,Contact contact);
+	boolean createContactForUser(User user,Contact contact);
 
 	/**
-	 * Add personal history for a user.
+	 * Update contact info for a user.
+	 *
+	 * @param user
+	 * @param contact
+	 * @return
+	 */
+	boolean updateContactForUser(User user,Contact contact);
+
+	/**
+	 * Create personal history for a user.
 	 *
 	 * @param user
 	 * @param personalHistory
 	 * @return
 	 */
-	boolean addPersonalHistoryForUser(User user,PersonalHistory personalHistory);
+	boolean createPersonalHistoryForUser(User user,PersonalHistory personalHistory);
 
 	/**
-	 * Add awards for a user.
+	 * Create awards for a user.
 	 *
 	 * @param user
 	 * @param awards
 	 * @return
 	 */
-	boolean addAwardsForUser(User user,Awards awards);
+	boolean createAwardsForUser(User user,Awards awards);
 }
