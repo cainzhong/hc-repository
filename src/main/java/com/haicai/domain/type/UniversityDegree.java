@@ -19,4 +19,12 @@ public enum UniversityDegree {
 		this.degree = degree;
 		this.identify=identify;
 	}
+
+	public String getDegree() {
+		return this.degree;
+	}
+
+	public int getIdentify() {
+		return this.identify;
+	}
 }

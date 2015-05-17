@@ -1,6 +1,8 @@
 package com.haicai.domain;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +47,7 @@ public class PersonalHistory {
 	private String major;
 
 	@Column(name = "GRADUATION_YEAR")
-	private String graduationYear;
+	private Date graduationYear;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
@@ -94,10 +96,11 @@ public class PersonalHistory {
 	}
 
 	public String getGraduationYear() {
-		return this.graduationYear;
+		SimpleDateFormat sdf =new SimpleDateFormat("yyyy");
+		return sdf.format(this.graduationYear);
 	}
 
-	public void setGraduationYear(String graduationYear) {
+	public void setGraduationYear(Date graduationYear) {
 		this.graduationYear = graduationYear;
 	}
 

@@ -19,4 +19,12 @@ public enum Sex {
 		this.sex = sex;
 		this.identify=identify;
 	}
+
+	public String getSex() {
+		return this.sex;
+	}
+
+	public int getIdentify() {
+		return this.identify;
+	}
 }

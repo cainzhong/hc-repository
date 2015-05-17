@@ -20,4 +20,11 @@ public enum IdNumberType {
 		this.identify=identify;
 	}
 
+	public String getIdNumberType() {
+		return this.idNumberType;
+	}
+
+	public int getIdentify() {
+		return this.identify;
+	}
 }

@@ -55,14 +55,14 @@ public class PortletRepositoryImpl implements PortletRepository {
 //	@Transactional
 	// (readOnly=true,propagation=Propagation.REQUIRES_NEW)
 	public User getUserByUserName(String username) {
-		Query query = this.sessionFactory.openSession().createQuery("from User as u where u.username= ?");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from User as u where u.username= ?");
 		query.setParameter(0, username);
 		User user = (User) query.uniqueResult();
 		return user;
 	}
 
 	public User getUserByUserId(int userId) {
-		Query query = this.sessionFactory.openSession().createQuery("from User as u where u.id= :userId");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from User as u where u.id= :userId");
 		query.setParameter("userId", userId);
 		User user = (User) query.uniqueResult();
 		return user;
@@ -75,21 +75,21 @@ public class PortletRepositoryImpl implements PortletRepository {
 			sqlQuery.append(" and c.status = status");
 		}
 
-		Query query = this.sessionFactory.openSession().createQuery(sqlQuery.toString());
+		Query query = this.sessionFactory.getCurrentSession().createQuery(sqlQuery.toString());
 		query.setParameter("user", user);
 		List<Contact> contactList = query.list();
 		return contactList;
 	}
 
 	public List<PersonalHistory> getPersonalHistoryForUser(User user) {
-		Query query = this.sessionFactory.openSession().createQuery("from PersonalHistory as ph where ph.user= :user");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from PersonalHistory as ph where ph.user= :user");
 		query.setParameter("user", user);
 		List<PersonalHistory> personalHistoryList = query.list();
 		return personalHistoryList;
 	}
 
 	public List<Awards> getAwardsForUser(User user) {
-		Query query = this.sessionFactory.openSession().createQuery("from Awards as a where a.user= :user");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from Awards as a where a.user= :user");
 		query.setParameter("user", user);
 		List<Awards> awardsList = query.list();
 		return awardsList;

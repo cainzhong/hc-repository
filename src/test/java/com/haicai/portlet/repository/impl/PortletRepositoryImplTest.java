@@ -1,6 +1,7 @@
 package com.haicai.portlet.repository.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -27,7 +28,7 @@ import com.haicai.domain.type.UniversityDegree;
 public class PortletRepositoryImplTest {
 
 	private static PortletRepositoryImpl portletRepositoryImpl;
-	private final int userId=1;
+	private final int userId = 1;
 	private User user;
 	private Contact emailContact;
 	private Contact telephoneContact;
@@ -39,8 +40,8 @@ public class PortletRepositoryImplTest {
 	private List<Awards> awardsList;
 
 	@Before
-	public void setUp(){
-		this.user=new User();
+	public void setUp() {
+		this.user = new User();
 		this.user.setId(1);
 		this.user.setUsername("email@email.com");
 		this.user.setRealName("Real Name");
@@ -52,10 +53,10 @@ public class PortletRepositoryImplTest {
 		this.user.setCurrentCountry("USA");
 		this.user.setCurrentCity("San Diego");
 
-		this.emailContact=new Contact();
-		this.telephoneContact=new Contact();
-		this.otherContact=new Contact();
-		this.contactList=new ArrayList<Contact>();
+		this.emailContact = new Contact();
+		this.telephoneContact = new Contact();
+		this.otherContact = new Contact();
+		this.contactList = new ArrayList<Contact>();
 
 		this.emailContact.setId(1);
 		this.emailContact.setInfo("email@email.com");
@@ -79,17 +80,17 @@ public class PortletRepositoryImplTest {
 		this.contactList.add(this.telephoneContact);
 		this.contactList.add(this.otherContact);
 
-		this.personalHistory=new PersonalHistory();
-		this.personalHistoryList=new ArrayList<PersonalHistory>();
+		this.personalHistory = new PersonalHistory();
+		this.personalHistoryList = new ArrayList<PersonalHistory>();
 		this.personalHistory.setId(1);
 		this.personalHistory.setUniversity("San Diego State University");
 		this.personalHistory.setUniversityDegree(UniversityDegree.Doctor);
-		this.personalHistory.setGraduationYear("2013-01-01");
+		this.personalHistory.setGraduationYear(new Date(2013, 01, 01));
 		this.personalHistory.setUser(this.user);
 		this.personalHistoryList.add(this.personalHistory);
 
-		this.awards=new Awards();
-		this.awardsList=new ArrayList<Awards>();
+		this.awards = new Awards();
+		this.awardsList = new ArrayList<Awards>();
 		this.awards.setId(1);
 		this.awards.setType(AwardsType.HonoraryTitle);
 		this.awards.setDescription("Captain");
@@ -100,13 +101,13 @@ public class PortletRepositoryImplTest {
 	}
 
 	@BeforeClass
-	public static void start(){
+	public static void start() {
 		PortletRepositoryImplTest.portletRepositoryImpl = new PortletRepositoryImpl();
 		PortletRepositoryImplTest.portletRepositoryImpl.openSessionAndTransaction();
 	}
 
 	@AfterClass
-	public static void end(){
+	public static void end() {
 		PortletRepositoryImplTest.portletRepositoryImpl.closeSessionAndTranstion();
 	}
 
@@ -114,31 +115,31 @@ public class PortletRepositoryImplTest {
 	public void testGetUserByUserName() {
 		String username = "email@email.com";
 		User user = PortletRepositoryImplTest.portletRepositoryImpl.getUserByUserName(username);
-		Assert.assertEquals(this.user,user);
+		Assert.assertEquals(this.user, user);
 	}
 
 	@Test
 	public void testGetUserByUserId() {
 		User user = PortletRepositoryImplTest.portletRepositoryImpl.getUserByUserId(this.userId);
-		Assert.assertEquals(this.user,user);
+		Assert.assertEquals(this.user, user);
 	}
 
 	@Test
-	public void testGetContactInfoForUser(){
-		List<Contact> contactList=PortletRepositoryImplTest.portletRepositoryImpl.getContactInfoForUser(this.user);
-		Assert.assertEquals(this.contactList,contactList);
+	public void testGetContactInfoForUser() {
+		List<Contact> contactList = PortletRepositoryImplTest.portletRepositoryImpl.getContactInfoForUser(this.user, null);
+		Assert.assertEquals(this.contactList, contactList);
 	}
 
 	@Test
-	public void testGetPersonalHistoryForUser(){
-		List<PersonalHistory> personalHistoryList=PortletRepositoryImplTest.portletRepositoryImpl.getPersonalHistoryForUser(this.user);
-		Assert.assertEquals(this.personalHistoryList,personalHistoryList);
+	public void testGetPersonalHistoryForUser() {
+		List<PersonalHistory> personalHistoryList = PortletRepositoryImplTest.portletRepositoryImpl.getPersonalHistoryForUser(this.user);
+		Assert.assertEquals(this.personalHistoryList, personalHistoryList);
 	}
 
 	@Test
-	public void testGetAwardsForUser(){
-		List<Awards> awardsList=PortletRepositoryImplTest.portletRepositoryImpl.getAwardsForUser(this.user);
-		Assert.assertEquals(this.awardsList,awardsList);
+	public void testGetAwardsForUser() {
+		List<Awards> awardsList = PortletRepositoryImplTest.portletRepositoryImpl.getAwardsForUser(this.user);
+		Assert.assertEquals(this.awardsList, awardsList);
 	}
 
 }

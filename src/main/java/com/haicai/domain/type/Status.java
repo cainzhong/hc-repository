@@ -19,4 +19,12 @@ public enum Status {
 		this.type=type;
 		this.identify=identify;
 	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public int getIdentify() {
+		return this.identify;
+	}
 }
