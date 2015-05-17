@@ -72,11 +72,12 @@ public class PortletRepositoryImpl implements PortletRepository {
 		StringBuffer sqlQuery=new StringBuffer();
 		sqlQuery.append("from Contact as c where c.user = :user");
 		if(status!=null){
-			sqlQuery.append(" and c.status = status");
+			sqlQuery.append(" and c.status = :status");
 		}
 
 		Query query = this.sessionFactory.getCurrentSession().createQuery(sqlQuery.toString());
 		query.setParameter("user", user);
+		query.setParameter("status", status);
 		List<Contact> contactList = query.list();
 		return contactList;
 	}
