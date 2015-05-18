@@ -78,23 +78,26 @@ public class PortletRepositoryImpl implements PortletRepository {
 
 		Query query = this.sessionFactory.getCurrentSession().createQuery(sqlQuery.toString());
 		query.setParameter("user", user);
-		query.setParameter("status", status);
+		if (status != null) {
+			query.setParameter("status", status);
+		}
 		List<Contact> contactList = query.list();
 		return contactList;
 	}
 
 	public Contact getSpecificActiveContactInfoForUser(User user, ContactType contactType, String otherDdescription) {
 		StringBuffer sqlQuery = new StringBuffer();
-		sqlQuery.append("from Contact as c where c.user = :user and c.status =:status");
+		sqlQuery.append("from Contact as c where c.user = :user and c.status =:status and c.type = :contactType");
 		if (contactType.equals(ContactType.OTHER)) {
-			sqlQuery.append(" and c.type = :contactType and upper(c.otherDdescription) = :otherDdescription");
+			sqlQuery.append(" and upper(c.otherDdescription) = :otherDdescription");
 		}
-		Query query = this.sessionFactory.getCurrentSession().createQuery("from Contact as c where c.user = :user and c.status =:status and c.type = :contactType");
+		Query query = this.sessionFactory.getCurrentSession().createQuery(sqlQuery.toString());
 		query.setParameter("user", user);
 		query.setParameter("status", Status.ACTIVE);
 		query.setParameter("contactType", contactType);
-		query.setParameter("otherDdescription", otherDdescription.toUpperCase());
-
+		if (contactType.equals(ContactType.OTHER)) {
+			query.setParameter("otherDdescription", otherDdescription.toUpperCase());
+		}
 		return (Contact) query.uniqueResult();
 	}
 
@@ -133,7 +136,17 @@ public class PortletRepositoryImpl implements PortletRepository {
 		}
 	}
 
-	public boolean updateContactForUser(User user,Contact contact){
+	public boolean updateUser(User user) {
+		try {
+			this.sessionFactory.getCurrentSession().update(user);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean updateContactForUser(User user, Contact contact) {
 		try {
 			contact.setUser(user);
 			this.sessionFactory.getCurrentSession().update(contact);

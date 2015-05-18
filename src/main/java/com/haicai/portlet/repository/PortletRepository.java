@@ -84,6 +84,14 @@ public interface PortletRepository {
 	boolean createContactForUser(User user,Contact contact);
 
 	/**
+	 * Update a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean updateUser(User user);
+
+	/**
 	 * Update contact info for a user.
 	 *
 	 * @param user
