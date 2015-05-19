@@ -9,13 +9,13 @@ import lombok.ToString;
  *
  */
 @ToString
-public enum AwardsType {
+public enum AwardType {
 	HonoraryTitle("HONORARY TITLE",0), Thesis("THESIS",1), IntellectualProperty("INTELLECTUAL PROPERTY",2), Other("OTHER",3);
 
 	private String type;
 	private int identify;
 
-	private AwardsType(String type, int identify) {
+	private AwardType(String type, int identify) {
 		this.type = type;
 		this.identify=identify;
 	}

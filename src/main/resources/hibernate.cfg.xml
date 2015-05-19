@@ -27,7 +27,7 @@
 		<mapping class="com.haicai.domain.User" />
 		<mapping class="com.haicai.domain.Contact" />
 		<mapping class="com.haicai.domain.PersonalHistory" />
-		<mapping class="com.haicai.domain.Awards" />
+		<mapping class="com.haicai.domain.Award" />
 		<mapping class="com.haicai.domain.JobAsked" />
 		<mapping class="com.haicai.domain.Enterprise" />
 		<mapping class="com.haicai.domain.Project" />

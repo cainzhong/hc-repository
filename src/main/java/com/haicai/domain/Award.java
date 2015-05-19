@@ -17,7 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import com.haicai.domain.type.AwardsType;
+import com.haicai.domain.type.AwardType;
 
 /**
  * @author Cain
@@ -28,7 +28,7 @@ import com.haicai.domain.type.AwardsType;
 @ToString
 @EqualsAndHashCode
 @Table(name = "AWARDS")
-public class Awards {
+public class Award {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
@@ -36,7 +36,7 @@ public class Awards {
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "TYPE")
-	private AwardsType type;
+	private AwardType type;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
@@ -64,7 +64,7 @@ public class Awards {
 		this.id = id;
 	}
 
-	public AwardsType getType() {
+	public AwardType getType() {
 		return this.type;
 	}
 
@@ -73,7 +73,7 @@ public class Awards {
 	 *
 	 * @param type
 	 */
-	public void setType(AwardsType type) {
+	public void setType(AwardType type) {
 		this.type = type;
 	}
 
