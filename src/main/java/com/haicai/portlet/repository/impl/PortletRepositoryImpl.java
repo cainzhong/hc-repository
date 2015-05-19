@@ -1,5 +1,6 @@
 package com.haicai.portlet.repository.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -25,8 +26,10 @@ import com.haicai.portlet.repository.PortletRepository;
  *
  */
 @Repository
-public class PortletRepositoryImpl implements PortletRepository {
+public class PortletRepositoryImpl implements PortletRepository,Serializable {
 
+	private static final long serialVersionUID = 7424047476958283440L;
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
