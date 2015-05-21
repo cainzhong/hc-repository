@@ -29,7 +29,7 @@ import com.haicai.portlet.repository.PortletRepository;
 public class PortletRepositoryImpl implements PortletRepository,Serializable {
 
 	private static final long serialVersionUID = 7424047476958283440L;
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -89,9 +89,9 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		}
 	}
 
-	public boolean updateContact(User user, Contact contact) {
+	public boolean disableContact(Contact contact){
 		try {
-			contact.setUser(user);
+			contact.setStatus(Status.INACTIVE);
 			this.sessionFactory.getCurrentSession().update(contact);
 			return true;
 		} catch (Exception e) {
@@ -111,16 +111,8 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * com.haicai.portlet.repository.PortletRepository#updatePersonalHistory
-	 * (com.haicai.domain.User, com.haicai.domain.PersonalHistory)
-	 */
-	public boolean updatePersonalHistory(User user, PersonalHistory personalHistory) {
+	public boolean updatePersonalHistory(PersonalHistory personalHistory) {
 		try {
-			personalHistory.setUser(user);
 			this.sessionFactory.getCurrentSession().update(personalHistory);
 			return true;
 		} catch (Exception e) {
@@ -140,16 +132,8 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * com.haicai.portlet.repository.PortletRepository#updateAwards(com.haicai
-	 * .domain.User, com.haicai.domain.Award)
-	 */
-	public boolean updateAward(User user, Award award) {
+	public boolean updateAward(Award award) {
 		try {
-			award.setUser(user);
 			this.sessionFactory.getCurrentSession().update(award);
 			return true;
 		} catch (Exception e) {
@@ -212,11 +196,25 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		return personalHistoryList;
 	}
 
-	public List<Award> getAward(User user) {
+	public PersonalHistory getPersonalHistory(int personalHistoryId){
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from PersonalHistory as ph where ph.id= :personalHistoryId");
+		query.setParameter("personalHistoryId", personalHistoryId);
+		PersonalHistory personalHistory = (PersonalHistory) query.uniqueResult();
+		return personalHistory;
+	}
+
+	public List<Award> getAwards(User user) {
 		Query query = this.sessionFactory.getCurrentSession().createQuery("from Award as a where a.user= :user");
 		query.setParameter("user", user);
 		List<Award> awardsList = query.list();
 		return awardsList;
+	}
+
+	public Award getAward(int awardId) {
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from Award as a where a.id= :awardId");
+		query.setParameter("awardId", awardId);
+		Award award=(Award) query.uniqueResult();
+		return award;
 	}
 
 }

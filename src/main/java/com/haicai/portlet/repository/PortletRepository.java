@@ -41,13 +41,12 @@ public interface PortletRepository {
 	boolean createContact(User user, Contact contact);
 
 	/**
-	 * Update a contact info for a user.
+	 * Set a contact info into inactive for a user.
 	 *
-	 * @param user
 	 * @param contact
 	 * @return
 	 */
-	boolean updateContact(User user, Contact contact);
+	boolean disableContact(Contact contact);
 
 	/**
 	 * Create a personal history for a user.
@@ -61,11 +60,10 @@ public interface PortletRepository {
 	/**
 	 * Update a personal history for a user.
 	 *
-	 * @param user
 	 * @param personalHistory
 	 * @return
 	 */
-	boolean updatePersonalHistory(User user, PersonalHistory personalHistory);
+	boolean updatePersonalHistory(PersonalHistory personalHistory);
 
 	/**
 	 * Create a award for a user.
@@ -79,11 +77,10 @@ public interface PortletRepository {
 	/**
 	 * Update a award for a user.
 	 *
-	 * @param user
 	 * @param award
 	 * @return
 	 */
-	boolean updateAward(User user, Award award);
+	boolean updateAward(Award award);
 
 	/**
 	 * Find a user info through user name.
@@ -129,10 +126,26 @@ public interface PortletRepository {
 	List<PersonalHistory> getPersonalHistories(User user);
 
 	/**
+	 * Find a history for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	PersonalHistory getPersonalHistory(int personalHistoryId);
+
+	/**
 	 * Find a list of award for a user.
 	 *
 	 * @param user
 	 * @return
 	 */
-	List<Award> getAward(User user);
+	List<Award> getAwards(User user);
+
+	/**
+	 * Find a award for a user.
+	 *
+	 * @param awardId
+	 * @return
+	 */
+	Award getAward(int awardId);
 }

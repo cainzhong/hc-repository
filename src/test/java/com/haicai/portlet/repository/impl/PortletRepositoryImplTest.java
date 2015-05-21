@@ -1,7 +1,6 @@
 package com.haicai.portlet.repository.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -85,7 +84,7 @@ public class PortletRepositoryImplTest {
 		this.personalHistory.setId(1);
 		this.personalHistory.setUniversity("San Diego State University");
 		this.personalHistory.setUniversityDegree(UniversityDegree.Doctor);
-		this.personalHistory.setGraduationYear(new Date(2013, 01, 01));
+		this.personalHistory.setGraduationYear("2012");
 		this.personalHistory.setUser(this.user);
 		this.personalHistoryList.add(this.personalHistory);
 
@@ -138,7 +137,7 @@ public class PortletRepositoryImplTest {
 
 	@Test
 	public void testGetAwardsForUser() {
-		List<Award> awardsList = PortletRepositoryImplTest.portletRepositoryImpl.getAward(this.user);
+		List<Award> awardsList = PortletRepositoryImplTest.portletRepositoryImpl.getAwards(this.user);
 		Assert.assertEquals(this.awardsList, awardsList);
 	}
 
