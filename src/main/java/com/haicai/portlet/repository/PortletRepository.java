@@ -69,7 +69,7 @@ public interface PortletRepository {
 	 * Create a award for a user.
 	 *
 	 * @param user
-	 * @param awards
+	 * @param award
 	 * @return
 	 */
 	boolean createAward(User user, Award award);

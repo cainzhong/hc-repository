@@ -4,8 +4,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +15,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import com.haicai.domain.type.AwardType;
-
 /**
  * @author Cain
  *
@@ -27,25 +23,16 @@ import com.haicai.domain.type.AwardType;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "AWARD")
-public class Award {
+@Table(name = "USER_ROLES")
+public class UserRoles {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
 	private int id;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "TYPE")
-	private AwardType type;
-
-	@Column(name = "DESCRIPTION")
-	private String description;
-
-	@Column(name = "REFERRER")
-	private String referrer;
-
-	@Column(name = "OTHER")
-	private String other;
+//	@Enumerated(EnumType.ORDINAL)
+	@Column(name="ROLE")
+	private String role;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
@@ -64,41 +51,12 @@ public class Award {
 		this.id = id;
 	}
 
-	public AwardType getType() {
-		return this.type;
+	public String getRole() {
+		return this.role;
 	}
 
-	/**
-	 * Honorary_Title("HONORARY TITLE",0), Thesis("THESIS",1), Intellectual_property("INTELLECTUAL PROPERTY",2), Other("OTHER",3)
-	 *
-	 * @param type
-	 */
-	public void setType(AwardType type) {
-		this.type = type;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getReferrer() {
-		return this.referrer;
-	}
-
-	public void setReferrer(String referrer) {
-		this.referrer = referrer;
-	}
-
-	public String getOther() {
-		return this.other;
-	}
-
-	public void setOther(String other) {
-		this.other = other;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public User getUser() {
@@ -124,6 +82,4 @@ public class Award {
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
 	}
-
-
 }

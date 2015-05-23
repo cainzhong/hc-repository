@@ -121,10 +121,10 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		}
 	}
 
-	public boolean createAward(User user, Award awards) {
+	public boolean createAward(User user, Award award) {
 		try {
-			awards.setUser(user);
-			this.sessionFactory.getCurrentSession().save(awards);
+			award.setUser(user);
+			this.sessionFactory.getCurrentSession().save(award);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
