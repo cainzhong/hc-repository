@@ -1,5 +1,6 @@
 package com.haicai.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -28,7 +29,10 @@ import com.haicai.domain.type.Sex;
 @ToString
 @EqualsAndHashCode
 @Table(name = "USER")
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 4691898959114643113L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID",nullable=false)
