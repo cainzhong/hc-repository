@@ -16,6 +16,7 @@ import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
+import com.haicai.domain.UserRole;
 import com.haicai.domain.type.ContactType;
 import com.haicai.domain.type.Status;
 import com.haicai.hibernate.util.HibernateUtil;
@@ -155,6 +156,13 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		query.setParameter("userId", userId);
 		User user = (User) query.uniqueResult();
 		return user;
+	}
+
+	public List<UserRole> getUserRolesByUser(User user){
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from UserRole as ur where ur.user= :user");
+		query.setParameter("user", user);
+		List<UserRole> userRoles = query.list();
+		return userRoles;
 	}
 
 	public List<Contact> getContacts(User user, Status status) {

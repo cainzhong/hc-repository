@@ -6,6 +6,7 @@ import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
+import com.haicai.domain.UserRole;
 import com.haicai.domain.type.ContactType;
 import com.haicai.domain.type.Status;
 
@@ -97,6 +98,14 @@ public interface PortletRepository {
 	 * @return
 	 */
 	User getUserByUserId(int userId);
+
+	/**
+	 * Find a list of user roles for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<UserRole> getUserRolesByUser(User user);
 
 	/**
 	 * Find a list of contact info for a user.

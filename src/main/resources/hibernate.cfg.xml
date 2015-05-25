@@ -25,7 +25,7 @@
 		<!-- <mapping resource="hc.hbm.xml"></mapping> -->
 		<!-- List of XML mapping files -->
 		<mapping class="com.haicai.domain.User" />
-		<mapping class="com.haicai.domain.UserRoles" />
+		<mapping class="com.haicai.domain.UserRole" />
 		<mapping class="com.haicai.domain.Contact" />
 		<mapping class="com.haicai.domain.PersonalHistory" />
 		<mapping class="com.haicai.domain.Award" />

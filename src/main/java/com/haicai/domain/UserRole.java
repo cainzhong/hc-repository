@@ -23,8 +23,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "USER_ROLES")
-public class UserRoles {
+@Table(name = "USER_ROLE")
+public class UserRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
