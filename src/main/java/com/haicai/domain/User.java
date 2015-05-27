@@ -72,6 +72,17 @@ public class User implements Serializable{
 
 	@Column(name="UPDATE_TIME")
 	private Timestamp updateTime;
+	
+	@Column(name="PORTRAIT" ,length = 100000000)
+	private byte[] portrait;
+
+	public byte[] getPortrait() {
+	           return portrait;
+	}
+	
+	 public void setPortrait(byte[] portrait) {
+	           this.portrait = portrait;
+	 }
 
 	public long getId() {
 		return this.id;
