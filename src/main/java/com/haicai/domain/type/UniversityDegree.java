@@ -3,8 +3,7 @@ package com.haicai.domain.type;
 import lombok.ToString;
 
 /**
- * Enum: UNIVERSITY_DEGREE - Bachelor("BACHELOR",0), Master("MASTER",1),
- * Doctor("DOCTOR",2), PostDoctor("POST-DOCTOR",3), Other("OTHER",4)
+ * Enum: Bachelor("T_UNIVERSITY_DEGREE_BACHELOR", 0), Master("T_UNIVERSITY_DEGREE_MASTER", 1), Doctor("T_UNIVERSITY_DEGREE_DOCTOR", 2), PostDoctor("T_UNIVERSITY_DEGREE_POSTDOCTOR", 3), Other("T_UNIVERSITY_DEGREE_OTHER", 4)
  *
  * @author Cain
  *

@@ -100,7 +100,7 @@ public class PersonalHistory {
 	}
 
 	public void setGraduationYear(String graduationYear) {
-		String timeSuffix = "-01-01 00:00:00";
+		String timeSuffix = "-07-01 00:00:00";
 		this.graduationYear = Timestamp.valueOf(graduationYear+timeSuffix);
 	}
 
