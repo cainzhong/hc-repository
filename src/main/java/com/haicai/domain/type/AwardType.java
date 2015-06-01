@@ -3,17 +3,14 @@ package com.haicai.domain.type;
 import lombok.ToString;
 
 /**
- * Enum: TYPE - HonoraryTitle("T_AWARD_HONORARY_TITLE",0),
- * Thesis("T_AWARD_THESIS",1),
- * IntellectualProperty("T_AWARD_INTELLECTUAL_PROPERTY PROPERTY",2),
- * Other("T_AWARD_OTHER",3)
+ * Enum: HonoraryTitle("T_AWARD_TYPE_HONORARY_TITLE", 0), Thesis("T_AWARD_TYPE_THESIS", 1), IntellectualProperty("T_AWARD_TYPE_INTELLECTUAL_PROPERTY", 2), Other("T_AWARD_TYPE_OTHER", 3)
  *
  * @author Cain
  *
  */
 @ToString
 public enum AwardType {
-	HonoraryTitle("T_AWARD_HONORARY_TITLE", 0), Thesis("T_AWARD_THESIS", 1), IntellectualProperty("T_AWARD_INTELLECTUAL_PROPERTY PROPERTY", 2), Other("T_AWARD_OTHER", 3);
+	HonoraryTitle("T_AWARD_TYPE_HONORARY_TITLE", 0), Thesis("T_AWARD_TYPE_THESIS", 1), IntellectualProperty("T_AWARD_TYPE_INTELLECTUAL_PROPERTY", 2), Other("T_AWARD_TYPE_OTHER", 3);
 
 	private String type;
 	private int identify;
