@@ -31,13 +31,13 @@ public enum AwardType {
 	// from String type to Enum
 	public static AwardType getAwardType(String type) {
 		switch (type) {
-		case "T_AWARD_HONORARY_TITLE":
+		case "T_AWARD_TYPE_HONORARY_TITLE":
 			return HonoraryTitle;
-		case "T_AWARD_THESIS":
+		case "T_AWARD_TYPE_THESIS":
 			return Thesis;
-		case "T_AWARD_INTELLECTUAL_PROPERTY":
+		case "T_AWARD_TYPE_INTELLECTUAL_PROPERTY":
 			return IntellectualProperty;
-		case "T_AWARD_OTHER":
+		case "T_AWARD_TYPE_OTHER":
 			return Other;
 		default:
 			return Other;
