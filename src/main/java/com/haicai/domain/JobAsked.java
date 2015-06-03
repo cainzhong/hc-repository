@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,8 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import com.haicai.domain.type.WorkTimeType;
 
 /**
  * @author Cain
@@ -45,8 +49,9 @@ public class JobAsked {
 	@Column(name = "OFFICE_AREA")
 	private String officeArea;
 
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "WORK_TIME_TYPE")
-	private int workTimeType;
+	private WorkTimeType workTimeType;
 
 	@Column(name = "EXPECT_SALARY")
 	private String expectSalary;
@@ -95,11 +100,11 @@ public class JobAsked {
 		this.officeArea = officeArea;
 	}
 
-	public int getWorkTimeType() {
+	public WorkTimeType getWorkTimeType() {
 		return this.workTimeType;
 	}
 
-	public void setWorkTimeType(int workTimeType) {
+	public void setWorkTimeType(WorkTimeType workTimeType) {
 		this.workTimeType = workTimeType;
 	}
 
