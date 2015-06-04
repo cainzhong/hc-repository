@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
+import com.haicai.domain.JobAsked;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 import com.haicai.domain.UserRole;
@@ -157,4 +158,12 @@ public interface PortletRepository {
 	 * @return
 	 */
 	Award getAward(int awardId);
+
+	/**
+	 * Find a list of job asked for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<JobAsked> getJobAsked(User user);
 }

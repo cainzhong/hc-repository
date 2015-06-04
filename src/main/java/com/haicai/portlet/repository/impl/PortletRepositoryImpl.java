@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
+import com.haicai.domain.JobAsked;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 import com.haicai.domain.UserRole;
@@ -256,6 +257,18 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		query.setParameter("awardId", awardId);
 		Award award=(Award) query.uniqueResult();
 		return award;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.haicai.portlet.repository.PortletRepository#getJobAsked(com.haicai.domain.User)
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED,readOnly=true)
+	public List<JobAsked> getJobAsked(User user) {
+		Query query = this.sessionFactory.getCurrentSession().createQuery("from JobAsked as ja where ja.user= :user");
+		query.setParameter("user", user);
+		List<JobAsked> jobAskedList = query.list();
+		return jobAskedList;
 	}
 
 }
