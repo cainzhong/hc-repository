@@ -259,12 +259,24 @@ public class PortletRepositoryImpl implements PortletRepository,Serializable {
 		return award;
 	}
 
+	@Override
+	public boolean createJobAsked(User user, JobAsked jobAsked) {
+		try {
+			jobAsked.setUser(user);
+			this.sessionFactory.getCurrentSession().save(jobAsked);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
 	/* (non-Javadoc)
 	 * @see com.haicai.portlet.repository.PortletRepository#getJobAsked(com.haicai.domain.User)
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED,readOnly=true)
-	public List<JobAsked> getJobAsked(User user) {
+	public List<JobAsked> getJobAskeds(User user) {
 		Query query = this.sessionFactory.getCurrentSession().createQuery("from JobAsked as ja where ja.user= :user");
 		query.setParameter("user", user);
 		List<JobAsked> jobAskedList = query.list();

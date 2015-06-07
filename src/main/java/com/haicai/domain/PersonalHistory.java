@@ -99,9 +99,14 @@ public class PersonalHistory {
 		return sdf.format(this.graduationYear);
 	}
 
-	public void setGraduationYear(String graduationYear) {
-		String timeSuffix = "-07-01 00:00:00";
-		this.graduationYear = Timestamp.valueOf(graduationYear+timeSuffix);
+	public void setGraduationYear(Object graduationYear) {
+		if(graduationYear instanceof String){
+			String timeSuffix = "-07-01 00:00:00";
+			this.graduationYear = Timestamp.valueOf(graduationYear+timeSuffix);
+		}else if (graduationYear instanceof Timestamp) {
+			this.graduationYear = (Timestamp) graduationYear;
+		}
+
 	}
 
 	public User getUser() {

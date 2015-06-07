@@ -160,10 +160,19 @@ public interface PortletRepository {
 	Award getAward(int awardId);
 
 	/**
+	 * Create a record of JobAsked info for a user.
+	 *
+	 * @param user
+	 * @param jobAsked
+	 * @return
+	 */
+	boolean createJobAsked(User user,JobAsked jobAsked);
+
+	/**
 	 * Find a list of job asked for a user.
 	 *
 	 * @param user
 	 * @return
 	 */
-	List<JobAsked> getJobAsked(User user);
+	List<JobAsked> getJobAskeds(User user);
 }
