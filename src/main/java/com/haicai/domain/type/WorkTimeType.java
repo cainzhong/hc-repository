@@ -10,7 +10,7 @@ import lombok.ToString;
  */
 @ToString
 public enum WorkTimeType {
-	FullTime("T_INDIVIDUAL_POSITION_WORK_TIME_TYPE_FULL_TIME=", 0), PartTime("T_INDIVIDUAL_POSITION_WORK_TIME_TYPE_PART_TIME=", 1);
+	FullTime("T_INDIVIDUAL_POSITION_WORK_TIME_TYPE_FULL_TIME", 0), PartTime("T_INDIVIDUAL_POSITION_WORK_TIME_TYPE_PART_TIME", 1);
 
 	private String type;
 	private int identify;
